@@ -27,8 +27,13 @@
 
         /* Header */
         header {
-            background-color: var(--primary-color);
-            color: white;
+            background-image:url('tagh_nosrat1-reformed.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        
+            
+            color: rgb(255, 255, 255);
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
@@ -41,7 +46,7 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             color: white;
         }
@@ -87,7 +92,7 @@
 
         .btn-view {
             background-color: var(--accent-color);
-            color: white;
+            color: rgb(255, 255, 255);
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
@@ -127,7 +132,7 @@
             top: 15px;
             right: 20px;
             font-size: 30px;
-            color: white;
+            color: rgb(0, 0, 0);
             cursor: pointer;
             z-index: 1001;
         }
@@ -151,8 +156,8 @@
 </header>
 
 <section class="hero">
-    <h2>کتابخانه دیجیتال مدل‌های مهندسی</h2>
-    <p>مرکز مشاهده و بررسی مدل‌های سه بعدی با دقت بالا</p>
+    <h1>کتابخانه دیجیتال مدل‌های مهندسی</h1>
+    <p>مشاهده و بررسی مدل‌های سه بعدی</p>
 </section>
 
 <div class="container">
@@ -160,30 +165,37 @@
         
       
         <div class="card">
-            <img src="models/Hip_implant/hip implant isometic.JPG" alt="Hip Implant">
+            <img src="models/Hip_implant/hip implant isometic.JPG" alt="ایمپلنت هیپ">
             <div class="card-content">
-                <h3>Hip Implant Model</h3>
+                <h3>مدل ایمپلنت هیپ</h3>
                 <button class="btn-view" onclick="openModel('models/Hip_implant/hip_implant_for_github_page.glb')">مشاهده فایل سه بعدی</button>
+                <h1></h1>
+                <button class='btn-view' onclick="">دانلود فایل</button>
             </div>
         </div>
 
       
         <div class="card">
-            <img src="" alt="Stent">
+            <img src="models/Stent/stent_pic.JPG" alt="استنت">
             <div class="card-content">
-                <h3>Stent</h3>
-                <button class="btn-view" onclick="openModel('')">مشاهده فایل سه بعدی</button>
+                <h3>مدل استنت</h3>
+                <button class="btn-view" onclick="openModel('models/Stent/stent.glb')">مشاهده فایل سه بعدی</button>
+                <h1></h1>
+                <button class='btn-view' onclick="">دانلود فایل</button>
             </div>
         </div>
 
      
         <div class="card">
-            <img src="" alt="Humerus & Scapula Bone Models">
+            <img src="models/simple_one_cylinder_motor/simple_one_cylinder_motor.JPG" alt="مدل ساده موتور تک سیلندر">
             <div class="card-content">
-                <h3>Humerus & Scapula Bone Models</h3>
-                <button class="btn-view" onclick="openModel('')">مشاهده فایل سه بعدی</button>
+                <h3>مدل ساده موتور تک سیلندر</h3>
+                <button class="btn-view" onclick="openModel('models/simple_one_cylinder_motor/simple_one_cylinder_motor.glb')">مشاهده فایل سه بعدی</button>
+                <h1></h1>
+                <button class='btn-view' onclick="">دانلود فایل</button>
             </div>
         </div>
+
 
     </div>
 </div>
@@ -225,6 +237,5 @@
         }
     }
 </script>
-<h4>برای نوشتن نظرات و دانلود مدل های سه بعدی <a href="https://github.com/SdotJdot/CV-Online" target="_blank">کلیک</a> نمایید. </h4>
 </body>
 </html>
