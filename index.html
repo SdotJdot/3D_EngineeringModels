@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>پلتفرم نمایش مدل‌های مهندسی</title>
@@ -13,7 +15,7 @@
         :root {
             --primary-color: #2c3e50;
             --accent-color: #3498db;
-            --bg-color: #f4f7f6;
+            --bg-color: #757070;
             --card-bg: #ffffff;
             --text-color: #333;
         }
@@ -25,15 +27,12 @@
             color: var(--text-color);
         }
 
-        /* Header */
         header {
-            background-image:url('pic/Header/headerPic.jpg');
+            background-image:url('pic/Headers/header_pic.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-        
-            
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
@@ -43,15 +42,18 @@
 
         header h1 { margin: 0; font-size: 1.5rem; }
 
-        /* Hero Section */
         .hero {
+            
+            padding: 10px 5px;
+            background-image: url('pic/Headers/cover3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
+            color: rgb(0, 0, 0);
         }
 
-        /* Gallery Grid */
+
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -64,7 +66,6 @@
             gap: 25px;
         }
 
-        /* Card Style */
         .card {
             background: var(--card-bg);
             border-radius: 12px;
@@ -94,16 +95,23 @@
             background-color: var(--accent-color);
             color: rgb(255, 255, 255);
             border: none;
-            padding: 10px 20px;
+            padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
             font-family: inherit;
             transition: background 0.3s;
+            margin: 5px;
         }
 
-        .btn-view:hover { background-color: #2980b9; }
+        .btn-view:hover { background-color: #287fb8; }
 
-        /* Modal Style */
+        .image-controls {
+            margin: 10px 0;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -142,7 +150,6 @@
             height: 100%;
         }
 
-        /* Responsive */
         @media (max-width: 600px) {
             .grid { grid-template-columns: 1fr; }
         }
@@ -152,55 +159,178 @@
 
 <header>
     <h1>کتابخانه قطعات بیومکانیکی</h1>
-    <nav>خانه | مدل‌ها | درباره نویسنده</nav>
+    <nav>خانه | سالیدورکس | درباره نویسنده</nav>
 </header>
 
+
 <section class="hero">
-    <h1>کتابخانه دیجیتال مدل‌های مهندسی</h1>
-    <p>مشاهده و بررسی مدل‌های سه بعدی</p>
+    <h1 style="background-color: rgba(155, 150, 150, 0.851);  border-radius: 10px; padding: 20px 10px;">کتابخانه دیجیتال مدل‌های مهندسی</h1>
+    <p style="background-color: rgba(155, 150, 150, 0.851); border-radius: 10px; padding: 20px 10px;">مشاهده و بررسی مدل‌های سه بعدی</p>
 </section>
 
 <div class="container">
     <div class="grid">
         
-      
-        <div class="card">
-            <img src="models/Hip_implant/hip implant isometic.JPG" alt="ایمپلنت هیپ">
+        <!-- کارت ایمپلنت هیپ با گالری -->
+        <div class="card" data-card-id="hip">
+            <img id="hip-image" alt="ایمپلنت هیپ">
             <div class="card-content">
-                <h3>مدل ایمپلنت هیپ</h3>
+                <h3 id="hip-title">مدل ایمپلنت هیپ</h3>
+                <div class="image-controls">
+                    <button class='btn-view' onclick="changeImage('hip', -1)"><</button>
+                    <button class='btn-view' onclick="changeImage('hip', 1)">></button>
+                </div>
                 <button class="btn-view" onclick="openModel('models/Hip_implant/hip_implant_for_github_page.glb')">مشاهده فایل سه بعدی</button>
-                <h1></h1>
-                <button class='btn-view' onclick="">دانلود فایل</button>
+                <button class='btn-view' onclick="window.open('https://github.com/SdotJdot/3D_EngineeringModels/blob/9dc11f71c83da798942caff0264990caead9c2e6/models/Hip_implant/hip_implant_for_github_page.glb','_blank')">دانلود فایل</button>
             </div>
+            <h6> اندازه‌گذاری‌ها در این طرح از مقاله : </h6>
         </div>
 
-      
-        <div class="card">
-            <img src="models/Stent/stent_pic.JPG" alt="استنت">
+        <!-- کارت استنت با گالری -->
+        <div class="card" data-card-id="stent">
+            <img id="stent-image" alt="استنت">
             <div class="card-content">
-                <h3>مدل استنت</h3>
+                <h3 id="stent-title">مدل استنت</h3>
+                <div class="image-controls">
+                    <button class='btn-view' onclick="changeImage('stent', -1)"><</button>
+                    <button class='btn-view' onclick="changeImage('stent', 1)">></button>
+                </div>
                 <button class="btn-view" onclick="openModel('models/Stent/stent.glb')">مشاهده فایل سه بعدی</button>
-                <h1></h1>
-                <button class='btn-view' onclick="">دانلود فایل</button>
+                <button class='btn-view' onclick="window.open('https://github.com/SdotJdot/3D_EngineeringModels/tree/9dc11f71c83da798942caff0264990caead9c2e6/models/Stent','_blank')">دانلود فایل</button>
             </div>
         </div>
 
-     
-        <div class="card">
-            <img src="models/simple_one_cylinder_motor/simple_one_cylinder_motor.JPG" alt="مدل ساده موتور تک سیلندر">
+        <!-- کارت موتور تک سیلندر با گالری -->
+        <div class="card" data-card-id="motor">
+            <img id="motor-image" alt="مدل ساده موتور تک سیلندر">
             <div class="card-content">
-                <h3>مدل ساده موتور تک سیلندر</h3>
+                <h3 id="motor-title">مدل ساده موتور تک سیلندر</h3>
+                <div class="image-controls">
+                    <button class='btn-view' onclick="changeImage('motor', -1)"><</button>
+                    <button class='btn-view' onclick="changeImage('motor', 1)">></button>
+                </div>
                 <button class="btn-view" onclick="openModel('models/simple_one_cylinder_motor/simple_one_cylinder_motor.glb')">مشاهده فایل سه بعدی</button>
-                <h1></h1>
-                <button class='btn-view' onclick="">دانلود فایل</button>
+                <button class='btn-view' onclick="window.open('https://github.com/SdotJdot/3D_EngineeringModels/tree/9dc11f71c83da798942caff0264990caead9c2e6/models/simple_one_cylinder_motor','_blank')">دانلود فایل</button>
             </div>
         </div>
 
+        <!-- کارت ورقکاری با گالری -->
+        <div class="card" data-card-id="sheetmetal">
+            <img id="sheetmetal-image" alt="تمرین ورقکاری">
+            <div class="card-content">
+                <h3 id="sheetmetal-title">تمرین ورقکاری</h3>
+                <div class="image-controls">
+                    <button class='btn-view' onclick="changeImage('sheetmetal', -1)"><</button>
+                    <button class='btn-view' onclick="changeImage('sheetmetal', 1)">></button>
+                </div>
+                <button class="btn-view" onclick="openModel('models/sheetmetal/exercise1/sheet_metal_practise.glb')">مشاهده فایل سه بعدی</button>
+                <button class='btn-view' onclick="window.open('https://github.com/SdotJdot/3D_EngineeringModels/tree/main/models/sheetmetal/exercise1','_blank')">دانلود فایل</button>
+            </div>
+        </div>
+        <!-- کارت تمرین۱ با گالری -->
+        <div class="card" data-card-id="exercise">
+            <img id="exercise-image" alt="تمرین ">
+            <div class="card-content">
+                <h3 id="exercise-title">تمرین </h3>
+                <div class="image-controls">
+                    <button class='btn-view' onclick="changeImage('exercise', -1)"><</button>
+                    <button class='btn-view' onclick="changeImage('exercise', 1)">></button>
+                </div>
+                <button class="btn-view" onclick="openModel('models/3dsolid/exercise/ex1.glb')">مشاهده فایل سه بعدی</button>
+                <button class='btn-view' onclick="window.open('','_blank')">دانلود فایل</button>
+            </div>
+        </div>
+        <!-- کارت ورقکاری۲ با گالری -->        
+        <div class="card" data-card-id="sheetmetal2">
+            <img id="sheetmetal2-image" alt="تمرین ورقکاری">
+            <div class="card-content">
+                <h3 id="sheetmetal2-title">تمرین ورقکاری</h3>
+                <div class="image-controls">
+                    <button class='btn-view' onclick="changeImage('sheetmetal2', -1)"><</button>
+                    <button class='btn-view' onclick="changeImage('sheetmetal2', 1)">></button>
+                </div>
+                <button class="btn-view" onclick="openModel('models/sheetmetal/exercise2/PE04_01.glb')">مشاهده فایل سه بعدی</button>
+                <button class='btn-view' onclick="window.open('','_blank')">دانلود فایل</button>
+            </div>
+        </div>
+        <!-- کارت جک خودرو با گالری -->        
+        <div class="card" data-card-id="car_vault">
+            <img id="car_vault-image" alt="تمرین جک خودرو">
+            <div class="card-content">
+                <h3 id="car_vault-title">تمرین ورقکاری</h3>
+                <div class="image-controls">
+                    <button class='btn-view' onclick="changeImage('car_vault', -1)"><</button>
+                    <button class='btn-view' onclick="changeImage('car_vault', 1)">></button>
+                </div>
+                <button class="btn-view" onclick="openModel('models/car_vault/car_vault.glb')">مشاهده فایل سه بعدی</button>
+                <button class='btn-view' onclick="window.open('','_blank')">دانلود فایل</button>
+            </div>
+        </div>
+
+<!-- شروع آپارات-->
+
+        <!-- کارت تمرین1 با گالری --> 
+        <div class="card" data-card-id="exercise1">
+            <img id="exercise1-image" alt="تمرین ۱">
+            <div class="card-content">
+                <h3 id="exercise1-title">تمرین ۱</h3>
+                <div class="image-controls">
+                    <button class='btn-view' onclick="changeImage('exercise1', -1)"><</button>
+                    <button class='btn-view' onclick="changeImage('exercise1', 1)">></button>
+                </div>
+                <button class="btn-view" onclick="openModel('models/3dsolid/exercise1/SOLIDWORKS_200_EXERCISES_ex1.glb')">مشاهده فایل سه بعدی</button>
+                <button class='btn-view' onclick="window.open('','_blank')">دانلود فایل</button>
+            </div>
+        </div>
+
+        <!-- کارت تمرین2 با گالری --> 
+        <div class="card" data-card-id="exercise2">
+            <img id="exercise2-image" alt="تمرین ۲">
+            <div class="card-content">
+                <h3 id="exercise2-title">تمرین ۲</h3>
+                <div class="image-controls">
+                    <button class='btn-view' onclick="changeImage('exercise2', -1)"><</button>
+                    <button class='btn-view' onclick="changeImage('exercise2', 1)">></button>
+                </div>
+                <button class="btn-view" onclick="openModel('models/3dsolid/exercise2/SOLIDWORKS_200_EXERCISES_ex002.glb')">مشاهده فایل سه بعدی</button>
+                <button class='btn-view' onclick="window.open('','_blank')">دانلود فایل</button>
+            </div>
+        </div>
+
+        <!-- کارت تمرین3 با گالری --> 
+        <div class="card" data-card-id="exercise3">
+            <img id="exercise3-image" alt="تمرین ۳">
+            <div class="card-content">
+                <h3 id="exercise3-title">تمرین ۳</h3>
+                <div class="image-controls">
+                    <button class='btn-view' onclick="changeImage('exercise3', -1)"><</button>
+                    <button class='btn-view' onclick="changeImage('exercise3', 1)">></button>
+                </div>
+                <button class="btn-view" onclick="openModel('models/3dsolid/exercise3/SOLIDWORKS_200_EXERCISES_ex003.glb')">مشاهده فایل سه بعدی</button>
+                <button class='btn-view' onclick="window.open('','_blank')">دانلود فایل</button>
+            </div>
+        </div>
+
+        <!-- کارت تمرین۷ با گالری -->        
+        <div class="card" data-card-id="exercise7">
+            <img id="exercise7-image" alt="تمرین ۷">
+            <div class="card-content">
+                <h3 id="exercise7-title">تمرین ۷</h3>
+                <div class="image-controls">
+                    <button class='btn-view' onclick="changeImage('exercise7', -1)"><</button>
+                    <button class='btn-view' onclick="changeImage('exercise7', 1)">></button>
+                </div>
+                <button class="btn-view" onclick="openModel('models/3dsolid/exercise7/SOLIDWORKS_200_EXERCISES_ex7.glb')">مشاهده فایل سه بعدی</button>
+                <button class='btn-view' onclick="window.open('','_blank')">دانلود فایل</button>
+            </div>
+        </div>
 
     </div>
 </div>
 
+<!-- پایان آپارات-->
 
+<!--  نمایش مدل‌های سه > -->
 <div id="modelModal" class="modal">
     <span class="close-btn" onclick="closeModel()">&times;</span>
     <div class="modal-content">
@@ -213,29 +343,199 @@
         </model-viewer>
     </div>
 </div>
-
+<h4 style ='text-align: center;'> این سایت توسط
+    <span style="color: rgb(197, 10, 10);"> sdotjdot </span>
+    طراحی و ساخته شده است.
+</h4>
 <script>
+    // ============ تعریف دیتابیس گالری برای هر کارت ============
+    const galleries = {
+        hip: {
+            currentIndex: 0,
+            images: [
+                { img: "models/Hip_implant/hip_implant_isometic.JPG", title: "ایمپلنت هیپ - نمای ایزومتریک" },
+                { img: "models/Hip_implant/hip_implant_R.JPG", title: "ایمپلنت هیپ - نمای راست" },
+                { img: "models/Hip_implant/Proposed_artificial_hip_joint_design_article.png", title: "اندازه‌گذاری‌ها" }
+            ]
+        },
+        stent: {
+            currentIndex: 0,
+            images: [
+                { img: "models/Stent/stent_pic.JPG", title: "استنت - نمای اصلی" },
+                { img: "models/Stent/stent_pic.JPG", title: "اندازه‌گذاری‌ها" }
+            ]
+        },
+        motor: {
+            currentIndex: 0,
+            images: [
+                { img: "models/simple_one_cylinder_motor/simple_one_cylinder_motor.JPG", title: "موتور تک سیلندر - نمای اصلی" },
+                { img: "models/simple_one_cylinder_motor/base.JPG", title: "موتور تک سیلندر - پایه‌ها" },
+                { img: "models/simple_one_cylinder_motor/connecting_rod.JPG", title: "موتور تک سیلندر - شاتون" },
+                { img: "models/simple_one_cylinder_motor/crankshaft.JPG", title: "موتور تک سیلندر - میلنگ" },
+                { img: "models/simple_one_cylinder_motor/cylinder.JPG", title: "موتور تک سیلندر - سیلندر" },
+                { img: "models/simple_one_cylinder_motor/gearwheel.JPG", title: "موتور تک سیلندر - فلایویل" },
+                { img: "models/simple_one_cylinder_motor/oil_seal.JPG", title: "موتور تک سیلندر - کاسه نمد" },
+                { img: "models/simple_one_cylinder_motor/piston_pin.JPG", title: "موتور تک سیلندر - پین" },
+                { img: "models/simple_one_cylinder_motor/piston.JPG", title: "موتور تک سیلندر - پیستون" },
+                { img: "models/simple_one_cylinder_motor/preserver.JPG", title: "موتور تک سیلندر - نگهدارنده" },
+                { img: "models/simple_one_cylinder_motor/screw.JPG", title: "موتور تک سیلندر - پیچ" },
+                { img: "models/simple_one_cylinder_motor/simple_one_cylinder_motor_sketch.JPG", title: "موتور تک سیلندر - اندازه گذاری ها" },
+                { img: "models/simple_one_cylinder_motor/base_sketch.jpg", title: "موتور تک سیلندر - اندازه گذاری پایه و واشر" },
+                { img: "models/simple_one_cylinder_motor/connecting_rod_sketch.JPG", title: "موتور تک سیلندر - اندازه گذاری شاتون" },
+                { img: "models/simple_one_cylinder_motor/crankshaft_sketch.JPG", title: "موتور تک سیلندر - اندازه گذاری میلنگ" },
+                { img: "models/simple_one_cylinder_motor/cylinder_sketch.JPG", title: "موتور تک سیلندر - اندازه گذاری سیلندر" },
+                { img: "models/simple_one_cylinder_motor/gearwheel_sketch.JPG", title: "موتور تک سیلندر - فلایویل و کاسه نمد" },
+                { img: "models/simple_one_cylinder_motor/piston_sketch.JPG", title: "موتور تک سیلندر - اندازه گذاری پیستون" },
+                { img: "models/simple_one_cylinder_motor/screw_sketch.JPG", title: "موتور تک سیلندر - اندازه گذاری پین و پیچ و نگهدارنده" },
+
+
+            ]
+        },
+        sheetmetal: {
+            currentIndex: 0,
+            images: [
+                { img: "models/sheetmetal/exercise1/sheet_metal_practise.JPG", title: "تمرین ورقکاری - نمای ایزومتریک" },
+                { img: "", title: "تمرین ورقکاری ۲" },
+                { img: "", title: "تمرین ورقکاری ۳" }
+            ]
+        },
+        sheetmetal2: {
+            currentIndex: 0,
+            images: [
+                { img: "models/sheetmetal/exercise2/PE04_01.jpg", title: "تمرین ورقکاری ۲ - نمای ایزومتریک" },
+                { img: "models/sheetmetal/exercise2/PE04_01p1.jpg", title: "تمرین ورقکاری ۲ - اندازه گذاری ها" },
+                { img: "models/sheetmetal/exercise2/PE04_01p2.jpg", title: "تمرین ورقکاری ۲ - اندازه گذاری ها" },
+                { img: "models/sheetmetal/exercise2/instructions.jpg", title: "تمرین ورقکاری ۲ - اندازه گذاری ها" }
+            ]
+        },
+        car_vault: {
+            currentIndex: 0,
+            images: [
+                { img: "models/car_vault/car_vault_isometric.JPG", title: "جک خودرو - نمای ایزومتریک" },
+                { img: "models/car_vault/base.jpg", title: "جک خودرو - پایه" },
+                { img: "models/car_vault/body.jpg", title: "جک خودرو - بدنه" },
+                { img: "models/car_vault/insert.jpg", title: "جک خودرو - نگه دارنده" },
+                { img: "models/car_vault/pin.jpg", title: "جک خودرو - پین" },
+                { img: "models/car_vault/support.jpg", title: "جک خودرو - ساپورت" }
+            ]
+        },
+        exercise: {
+            currentIndex: 0,
+            images: [
+                { img: "models/3dsolid/exercise/ex1_SP.JPG", title: "تمرین - نمای ایزومتریک" },
+                { img: "models/3dsolid/exercise/ex1.JPG", title: "تمرین - اندازه‌گذاری‌ها" }
+            ]
+        },
+        exercise7: {
+            currentIndex: 0,
+            images: [
+                { img: "models/3dsolid/exercise7/SOLIDWORKS_200_EXERCISES_ex7_cover.jpg", title: " تمرین۷ " },
+                { img: "models/3dsolid/exercise7/SOLIDWORKS_200_EXERCISES_ex7_isometric.JPG", title: "تمرین۷ - نمای ایزومتریک" },
+                { img: "models/3dsolid/exercise7/SOLIDWORKS_200_EXERCISES_ex7_top.JPG", title: "تمرین۷ - نمای بالا" },
+                { img: "models/3dsolid/exercise7/SOLIDWORKS_200_EXERCISES_ex7.jpg", title: "تمرین۷ - اندازه‌گذاری‌ها" }
+            ]
+        },
+        exercise1: {
+            currentIndex: 0,
+            images: [
+                { img: "models/3dsolid/exercise1/SOLIDWORKS_200_EXERCISES_ex1_cover.jpg", title: " تمرین۱ " },
+                { img: "models/3dsolid/exercise1/SOLIDWORKS_200_EXERCISES_ex1_isometric.JPG", title: "تمرین۱ - نمای ایزومتریک" },
+                { img: "models/3dsolid/exercise1/SOLIDWORKS_200_EXERCISES_ex1_top.JPG", title: "تمرین۱ - نمای بالا" },
+                { img: "models/3dsolid/exercise1/SOLIDWORKS_200_EXERCISES_ex1.jpg", title: "تمرین۱ - اندازه‌گذاری‌ها" }
+            ]
+        },  
+        exercise2: {
+            currentIndex: 0,
+            images: [
+                { img: "models/3dsolid/exercise2/SOLIDWORKS_200_EXERCISES_ex002_cover.jpg", title: " تمرین۲ " },
+                { img: "models/3dsolid/exercise2/SOLIDWORKS_200_EXERCISES_ex002_isometric.JPG", title: "تمرین۲ - نمای ایزومتریک" },
+                { img: "models/3dsolid/exercise2/SOLIDWORKS_200_EXERCISES_ex002.jpg", title: "تمرین۲ - اندازه‌گذاری‌ها" }
+            ]
+        },
+        exercise3: {
+            currentIndex: 0,
+            images: [
+                { img: "models/3dsolid/exercise3/SOLIDWORKS_200_EXERCISES_ex003_cover.jpg", title: " تمرین۳ " },
+                { img: "models/3dsolid/exercise3/SOLIDWORKS_200_EXERCISES_ex003_isometric.JPG", title: "تمرین۳ - نمای ایزومتریک" },
+                { img: "models/3dsolid/exercise3/SOLIDWORKS_200_EXERCISES_ex003.jpg", title: "تمرین۳ - اندازه‌گذاری‌ها" }
+            ]
+        },
+    };
+
+    // ============ عناصر DOM ============
     const modal = document.getElementById("modelModal");
     const viewer = document.getElementById("viewer");
 
-    
-    function openModel(modelPath) {
-        viewer.src = modelPath; 
-        modal.style.display = "flex";
+    // ============ تابع تغییر تصویر برای هر کارت ============
+    function changeImage(cardId, direction) {
+        // دریافت گالری مربوط به کارت
+        const gallery = galleries[cardId];
+        if (!gallery) {
+            console.error("گالری برای کارت " + cardId + " یافت نشد!");
+            return;
+        }
+
+        // تغییر ایندکس
+        gallery.currentIndex += direction;
+        
+        // تنظیم دایره‌ای
+        if (gallery.currentIndex < 0) gallery.currentIndex = gallery.images.length - 1;
+        if (gallery.currentIndex >= gallery.images.length) gallery.currentIndex = 0;
+
+        // دریافت اطلاعات تصویر فعلی
+        const currentImage = gallery.images[gallery.currentIndex];
+        
+        // به‌روزرسانی تصویر و عنوان
+        const imageElement = document.getElementById(cardId + "-image");
+        const titleElement = document.getElementById(cardId + "-title");
+        
+        if (imageElement && titleElement) {
+            imageElement.src = currentImage.img;
+            titleElement.innerText = currentImage.title;
+        }
     }
 
+    // ============ توابع مربوط به مودال ============
+    function openModel(modelPath) {
+        if (!modelPath) {
+            alert("مسیر مدل مشخص نشده است!");
+            return;
+        }
+        
+        console.log("در حال باز کردن مدل: " + modelPath);
+        viewer.src = modelPath;
+        modal.style.display = "flex";
+    }
 
     function closeModel() {
         modal.style.display = "none";
         viewer.src = "";
     }
 
-  
+    // بستن مودال با کلیک خارج از آن
     window.onclick = function(event) {
         if (event.target == modal) {
             closeModel();
         }
     }
+
+    // ============ تنظیم تصاویر اولیه پس از بارگذاری صفحه ============
+    document.addEventListener('DOMContentLoaded', function() {
+        // برای هر کارت، اولین تصویر را تنظیم کن
+        Object.keys(galleries).forEach(cardId => {
+            const gallery = galleries[cardId];
+            if (gallery.images.length > 0) {
+                const imageElement = document.getElementById(cardId + "-image");
+                const titleElement = document.getElementById(cardId + "-title");
+                
+                if (imageElement && titleElement) {
+                    imageElement.src = gallery.images[0].img;
+                    titleElement.innerText = gallery.images[0].title;
+                }
+            }
+        });
+    });
 </script>
+
 </body>
 </html>
